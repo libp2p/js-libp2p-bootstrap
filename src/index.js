@@ -23,10 +23,11 @@ function Bootstrap (peerList, options, swarm) {
       var mh = multiaddr(peerCandidate.split('/').splice(0, 5).join('/'))
       var peerId = Id.createFromB58String(peerCandidate.split('/').splice(6)[0])
 
-      var p = new Peer(peerId, [mh])
+      var p = new Peer(peerId)
+      p.multiaddr.add(mh)
 
       if (options && options.verify) {
-        swarm.dial(p, {}, function (err) {
+        swarm.dial(p, function (err) {
           if (err) {
             return
           }
