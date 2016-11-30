@@ -35,10 +35,10 @@
     "pre-commit": "^1.1.2"
   },
   "dependencies": {
-    "ipfs-logger": "^0.1.1",
-    "peer-info": "^0.8.0",
+    "debug": "^2.3.3",
+    "multiaddr": "^2.1.1",
     "peer-id": "^0.8.0",
-    "multiaddr": "^2.1.1"
+    "peer-info": "^0.8.0"
   },
   "jsnext:main": "src/index.js",
   "pre-commit": [

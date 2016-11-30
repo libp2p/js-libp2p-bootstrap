@@ -5,7 +5,10 @@ var Peer = require('peer-info')
 var multiaddr = require('multiaddr')
 var EventEmitter = require('events').EventEmitter
 var util = require('util')
-var log = require('ipfs-logger').group('bootstrap ipfs-railing')
+var debug = require('debug')
+
+var log = debug('libp2p:railing')
+log.error = debug('libp2p:railing:error')
 
 exports = module.exports = Bootstrap
 exports.default = require('./default.json')
@@ -26,7 +29,7 @@ function Bootstrap (peerList, options, swarm) {
 
       Peer.create(peerId, function (err, peer) {
         if (err) {
-          return log.warn('Error creating PeerInfo from bootstrap peer', err)
+          return log.error('Error creating PeerInfo from bootstrap peer', err)
         }
 
         peer.multiaddr.add(mh)
