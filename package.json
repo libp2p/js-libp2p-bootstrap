@@ -41,7 +41,7 @@
     "lodash": "^4.17.4",
     "multiaddr": "^2.2.2",
     "peer-id": "~0.8.4",
-    "peer-info": "~0.8.4"
+    "peer-info": "~0.9.0"
   },
   "pre-commit": [
     "lint",
