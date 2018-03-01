@@ -24,9 +24,18 @@ class Railing extends EventEmitter {
 
     this.interval = setInterval(() => {
       this.bootstrapers.forEach((candidate) => {
-        const ma = multiaddr(candidate)
+        let ma
 
-        const peerId = PeerId.createFromB58String(ma.getPeerId())
+        try {
+          ma = multiaddr(candidate)
+        } catch (err) {
+          return log.error('Invalid multiaddr', err)
+        }
+
+        const peerIdB58Str = ma.getPeerId()
+        if (!peerIdB58Str) { return log.error('Unable to resolve bootstrap peer id') }
+
+        const peerId = PeerId.createFromB58String(peerIdB58Str)
 
         PeerInfo.create(peerId, (err, peerInfo) => {
           if (err) { return log.error('Invalid bootstrap peer id', err) }
