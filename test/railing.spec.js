@@ -4,6 +4,8 @@
 const Railing = require('../src')
 const peerList = require('./default-peers')
 const partialValidPeerList = require('./some-invalid-peers')
+const {expect} = require('chai')
+const mafmt = require('mafmt')
 
 describe('without verify on', () => {
   it('find the other peer', function (done) {
@@ -16,8 +18,13 @@ describe('without verify on', () => {
   it('not fail on malformed peers in peer list', (done) => {
     const r = new Railing(partialValidPeerList)
 
-    r.start(() => {})
+    r.start(() => { })
 
-    r.once('peer', (peer) => done())
+    r.on('peer', (peer) => {
+      const peerList = peer.multiaddrs.toArray()
+      expect(peerList.length).to.eq(1)
+      expect(mafmt.IPFS.matches(peerList[0].toString()))
+      done()
+    })
   })
 })
