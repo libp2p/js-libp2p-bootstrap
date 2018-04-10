@@ -15,7 +15,8 @@ describe('without verify on', () => {
     r.start(() => {})
   })
 
-  it('not fail on malformed peers in peer list', (done) => {
+  it('not fail on malformed peers in peer list', function (done) {
+    this.timeout(20 * 1000)
     const r = new Railing(partialValidPeerList)
 
     r.start(() => { })
