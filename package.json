@@ -2,6 +2,7 @@
   "name": "libp2p-railing",
   "version": "0.9.1",
   "description": "Node.js IPFS Implementation of the railing process of a Node through a bootstrap peer list",
+  "leadMaintainer": "Vasco Santos <vasco.santos@moxy.studio>",
   "main": "src/index.js",
   "scripts": {
     "lint": "aegir lint",
