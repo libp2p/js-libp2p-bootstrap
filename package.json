@@ -26,17 +26,17 @@
     "npm": ">=3.0.0"
   },
   "devDependencies": {
-    "aegir": "github:ipfs/aegir#feat/make-exp-build-test-default",
+    "aegir": "^18.0.3",
     "chai": "^4.2.0",
     "libp2p-tcp": "~0.13.0"
   },
   "dependencies": {
     "async": "^2.6.1",
-    "debug": "^4.1.0",
-    "multiaddr": "multiformats/js-multiaddr#feat/bundle-size",
-    "mafmt": "multiformats/js-mafmt#fix/bundle-size",
-    "peer-id": "libp2p/js-peer-id#feat/bundle-size",
-    "peer-info": "libp2p/js-peer-info#feat/bundle-size"
+    "debug": "^4.1.1",
+    "mafmt": "^6.0.4",
+    "multiaddr": "^6.0.3",
+    "peer-id": "~0.12.2",
+    "peer-info": "~0.15.1"
   },
   "pre-push": [
     "lint",
