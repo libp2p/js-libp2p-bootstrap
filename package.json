@@ -29,16 +29,14 @@
   },
   "devDependencies": {
     "aegir": "^18.1.1",
-    "chai": "^4.2.0",
-    "libp2p-tcp": "~0.13.0"
+    "chai": "^4.2.0"
   },
   "dependencies": {
-    "async": "^2.6.2",
     "debug": "^4.1.1",
     "mafmt": "^6.0.6",
     "multiaddr": "^6.0.4",
-    "peer-id": "~0.12.2",
-    "peer-info": "~0.15.1"
+    "peer-id": "libp2p/js-peer-id#feat/async-await",
+    "peer-info": "libp2p/js-peer-info#feat/async-await"
   },
   "pre-push": [
     "lint",

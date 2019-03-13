@@ -8,18 +8,19 @@ const { expect } = require('chai')
 const mafmt = require('mafmt')
 
 describe('bootstrap', () => {
-  it('find the other peer', function (done) {
+  it('find the other peer', function () {
     this.timeout(5 * 1000)
     const r = new Bootstrap({
       list: peerList,
       interval: 2000
     })
 
-    r.once('peer', (peer) => done())
-    r.start(() => {})
+    const p = new Promise((resolve) => r.once('peer', resolve))
+    r.start()
+    return p
   })
 
-  it('not fail on malformed peers in peer list', function (done) {
+  it('not fail on malformed peers in peer list', function () {
     this.timeout(5 * 1000)
 
     const r = new Bootstrap({
@@ -27,13 +28,17 @@ describe('bootstrap', () => {
       interval: 2000
     })
 
-    r.start(() => { })
-
-    r.on('peer', (peer) => {
-      const peerList = peer.multiaddrs.toArray()
-      expect(peerList.length).to.eq(1)
-      expect(mafmt.IPFS.matches(peerList[0].toString()))
-      done()
+    const p = new Promise((resolve) => {
+      r.on('peer', (peer) => {
+        const peerList = peer.multiaddrs.toArray()
+        expect(peerList.length).to.eq(1)
+        expect(mafmt.IPFS.matches(peerList[0].toString()))
+        resolve()
+      })
     })
+
+    r.start()
+
+    return p
   })
 })
