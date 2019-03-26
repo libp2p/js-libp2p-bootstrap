@@ -10,6 +10,12 @@ const debug = require('debug')
 const log = debug('libp2p:bootstrap')
 log.error = debug('libp2p:bootstrap:error')
 
+/**
+ * Indicates if an address is in IPFS multi-address format.
+ *
+ * @param {string} addr
+ * @returns {boolean}
+ */
 function isIPFS (addr) {
   try {
     return mafmt.IPFS.matches(addr)
@@ -18,7 +24,18 @@ function isIPFS (addr) {
   }
 }
 
+/**
+ * Emits 'peer' events on a regular interval for each peer in the provided list.
+ */
 class Bootstrap extends EventEmitter {
+  /**
+   * Constructs a new Bootstrap.
+   *
+   * @param {Object} options
+   * @param {Array<string>} options.list - the list of peer addresses in multi-address format
+   * @param {number} options.interval - the interval between emitting addresses
+   *
+   */
   constructor (options) {
     super()
     this._list = options.list
@@ -26,6 +43,9 @@ class Bootstrap extends EventEmitter {
     this._timer = null
   }
 
+  /**
+   * Start emitting events.
+   */
   start () {
     if (this._timer) {
       return
@@ -36,6 +56,9 @@ class Bootstrap extends EventEmitter {
     this._discoverBootstrapPeers()
   }
 
+  /**
+   * Emit each address in the list as a PeerInfo.
+   */
   _discoverBootstrapPeers () {
     this._list.forEach(async (candidate) => {
       if (!isIPFS(candidate)) {
@@ -56,6 +79,9 @@ class Bootstrap extends EventEmitter {
     })
   }
 
+  /**
+   * Stop emitting events.
+   */
   stop () {
     if (this._timer) {
       clearInterval(this._timer)
