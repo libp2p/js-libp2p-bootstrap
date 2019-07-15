@@ -29,10 +29,10 @@ describe('bootstrap', () => {
     })
 
     const p = new Promise((resolve) => {
-      r.on('peer', (peer) => {
+      r.once('peer', (peer) => {
         const peerList = peer.multiaddrs.toArray()
         expect(peerList.length).to.eq(1)
-        expect(mafmt.IPFS.matches(peerList[0].toString()))
+        expect(mafmt.IPFS.matches(peerList[0].toString())).equals(true)
         resolve()
       })
     })
@@ -40,5 +40,29 @@ describe('bootstrap', () => {
     r.start()
 
     return p
+  })
+
+  it('stop emitting events when stop() called', async function () {
+    const interval = 100
+    const r = new Bootstrap({
+      list: peerList,
+      interval
+    })
+
+    let emitted = []
+    r.on('peer', p => emitted.push(p))
+
+    // Should fire emit event for each peer in list on start,
+    // so wait 50 milliseconds then check
+    const p = new Promise((resolve) => setTimeout(resolve, 50))
+    r.start()
+    await p
+    expect(emitted).to.have.length(peerList.length)
+
+    // After stop is called, no more peers should be emitted
+    emitted = []
+    r.stop()
+    await new Promise((resolve) => setTimeout(resolve, interval))
+    expect(emitted).to.have.length(0)
   })
 })

@@ -11,20 +11,6 @@ const log = debug('libp2p:bootstrap')
 log.error = debug('libp2p:bootstrap:error')
 
 /**
- * Indicates if an address is in IPFS multi-address format.
- *
- * @param {string} addr
- * @returns {boolean}
- */
-function isIPFS (addr) {
-  try {
-    return mafmt.IPFS.matches(addr)
-  } catch (e) {
-    return false
-  }
-}
-
-/**
  * Emits 'peer' events on a regular interval for each peer in the provided list.
  */
 class Bootstrap extends EventEmitter {
@@ -61,7 +47,7 @@ class Bootstrap extends EventEmitter {
    */
   _discoverBootstrapPeers () {
     this._list.forEach(async (candidate) => {
-      if (!isIPFS(candidate)) {
+      if (!mafmt.IPFS.matches(candidate)) {
         return log.error('Invalid multiaddr')
       }
 
