@@ -19,7 +19,7 @@ class Bootstrap extends EventEmitter {
    *
    * @param {Object} options
    * @param {Array<string>} options.list - the list of peer addresses in multi-address format
-   * @param {number} options.interval - the interval between emitting addresses
+   * @param {number} options.interval - the interval between emitting addresses (in milli-seconds)
    *
    */
   constructor (options) {
