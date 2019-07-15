@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "aegir": "^18.2.1",
-    "chai": "^4.2.0",
+    "chai": "^4.2.0"
   },
   "dependencies": {
     "debug": "^4.1.1",
