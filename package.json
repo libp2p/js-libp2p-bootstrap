@@ -35,8 +35,8 @@
     "debug": "^4.1.1",
     "mafmt": "^6.0.6",
     "multiaddr": "^6.0.4",
-    "peer-id": "libp2p/js-peer-id#feat/async-await",
-    "peer-info": "libp2p/js-peer-info#feat/async-await"
+    "peer-id": "^0.13.2",
+    "peer-info": "^0.16.0"
   },
   "pre-push": [
     "lint",
