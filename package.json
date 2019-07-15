@@ -28,13 +28,13 @@
     "npm": ">=3.0.0"
   },
   "devDependencies": {
-    "aegir": "^18.1.1",
-    "chai": "^4.2.0"
+    "aegir": "^18.2.1",
+    "chai": "^4.2.0",
   },
   "dependencies": {
     "debug": "^4.1.1",
-    "mafmt": "^6.0.6",
-    "multiaddr": "^6.0.4",
+    "mafmt": "^6.0.7",
+    "multiaddr": "^6.0.6",
     "peer-id": "^0.13.2",
     "peer-info": "^0.16.0"
   },
