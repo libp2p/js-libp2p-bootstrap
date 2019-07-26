@@ -32,7 +32,7 @@ class Bootstrap extends EventEmitter {
   /**
    * Start emitting events.
    */
-  start () {
+  start (cb) {
     if (this._timer) {
       return
     }
@@ -40,6 +40,8 @@ class Bootstrap extends EventEmitter {
     this._timer = setInterval(() => this._discoverBootstrapPeers(), this._interval)
 
     this._discoverBootstrapPeers()
+    
+    if (cb) cb()
   }
 
   /**
