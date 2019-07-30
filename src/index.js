@@ -32,6 +32,8 @@ class Bootstrap extends EventEmitter {
 
   /**
    * Start emitting events.
+   *
+   * @param {Function} cb - callback indicating completion
    */
   start (cb) {
     if (this._timer) {
@@ -41,7 +43,7 @@ class Bootstrap extends EventEmitter {
     this._timer = setInterval(() => this._discoverBootstrapPeers(), this._interval)
 
     this._discoverBootstrapPeers()
-    
+
     cb && nextTick(() => cb())
   }
 
