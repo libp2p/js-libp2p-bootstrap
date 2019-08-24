@@ -16,8 +16,7 @@
     "release-major": "aegir release --type major -t node",
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage publish",
-    "gen:typings": "./node_modules/.bin/jsdoc -c ./.jsdoc.json",
-    "dtslint": "./node_modules/.bin/dtslint ./types"
+    "gen:typings": "./node_modules/.bin/jsdoc -c ./.jsdoc.json"
   },
   "keywords": [
     "IPFS"
@@ -33,11 +32,9 @@
   "devDependencies": {
     "aegir": "^20.0.0",
     "chai": "^4.2.0",
-    "dtslint": "^0.9.2",
     "jsdoc": "^3.6.3",
     "tsd-jsdoc": "^2.3.1",
-    "typescript-definition-tester": "0.0.6",
-    "typings-checker": "^2.0.0"
+    "typescript-definition-tester": "0.0.6"
   },
   "dependencies": {
     "debug": "^4.1.1",
