@@ -1,5 +1,5 @@
 {
-  "name": "libp2p-histrap",
+  "name": "libp2p-bootstrap",
   "version": "0.10.2",
   "description": "Node.js IPFS Implementation of the railing process of a Node through a bootstrap peer list",
   "leadMaintainer": "Vasco Santos <vasco.santos@moxy.studio>",
@@ -45,7 +45,8 @@
   },
   "pre-push": [
     "lint",
-    "test"
+    "test",
+    "generate-typings"
   ],
   "contributors": [
     "Abraham Elmahrek <abe@apache.org>",

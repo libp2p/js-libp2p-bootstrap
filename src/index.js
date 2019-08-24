@@ -80,6 +80,6 @@ class Bootstrap extends EventEmitter {
     }
   }
 }
+exports = module.exports = Bootstrap
 /** Export tags */
 exports.tag = 'bootstrap'
-module.exports = Bootstrap
