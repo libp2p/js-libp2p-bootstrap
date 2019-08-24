@@ -4,7 +4,7 @@
   "description": "Node.js IPFS Implementation of the railing process of a Node through a bootstrap peer list",
   "leadMaintainer": "Vasco Santos <vasco.santos@moxy.studio>",
   "main": "src/index.js",
-  "typings": "src/typings.d.ts",
+  "typings": "src/types.d.ts",
   "scripts": {
     "lint": "aegir lint",
     "test": "aegir test",
@@ -45,8 +45,7 @@
   },
   "pre-push": [
     "lint",
-    "test",
-    "generate-typings"
+    "test"
   ],
   "contributors": [
     "Abraham Elmahrek <abe@apache.org>",

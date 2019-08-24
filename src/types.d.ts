@@ -28,8 +28,9 @@ declare module "js-libp2p-bootstrap" {
          */
         stop(): void;
     }
-    /** Export tags
+    /** Tag
+     * @type string
      */
-    var tag: any;
+    var tag: string;
 }
 

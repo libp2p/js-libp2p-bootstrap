@@ -1,4 +1,4 @@
-/// <reference path="../../src/typings.d.ts" />
+/// <reference path="../../src/types.d.ts" />
 
 import { Bootstrap } from "js-libp2p-bootstrap";
 const bootstrap1 = new Bootstrap({list: ["item"], interval: 1})
