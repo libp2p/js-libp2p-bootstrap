@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "lib": ["es6"],
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "noEmit": true,
+        "target": "es6",
+        
+        "baseUrl": ".",
+        "paths": { "js-libp2p-bootstrap": ["./src"] }
+    },
+    "exclude": [
+        "sample.ts",
+        "test",
+        "typings",
+        "node_modules"
+    ]
+}

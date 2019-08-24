@@ -1,9 +1,10 @@
 {
-  "name": "libp2p-bootstrap",
+  "name": "libp2p-histrap",
   "version": "0.10.2",
   "description": "Node.js IPFS Implementation of the railing process of a Node through a bootstrap peer list",
   "leadMaintainer": "Vasco Santos <vasco.santos@moxy.studio>",
   "main": "src/index.js",
+  "typings": "src/typings.d.ts",
   "scripts": {
     "lint": "aegir lint",
     "test": "aegir test",
@@ -14,7 +15,9 @@
     "release-minor": "aegir release --type minor -t node",
     "release-major": "aegir release --type major -t node",
     "coverage": "aegir coverage",
-    "coverage-publish": "aegir coverage publish"
+    "coverage-publish": "aegir coverage publish",
+    "gen:typings": "./node_modules/.bin/jsdoc -c ./.jsdoc.json",
+    "dtslint": "./node_modules/.bin/dtslint ./types"
   },
   "keywords": [
     "IPFS"
@@ -29,7 +32,12 @@
   },
   "devDependencies": {
     "aegir": "^20.0.0",
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "dtslint": "^0.9.2",
+    "jsdoc": "^3.6.3",
+    "tsd-jsdoc": "^2.3.1",
+    "typescript-definition-tester": "0.0.6",
+    "typings-checker": "^2.0.0"
   },
   "dependencies": {
     "debug": "^4.1.1",
@@ -59,6 +67,7 @@
     "Zane Starr <zcstarr@gmail.com>",
     "dirkmc <dirkmdev@gmail.com>",
     "victorbjelkholm <victor@protocol.ai>",
-    "ころ <koropicot@gmail.com>"
+    "ころ <koropicot@gmail.com>",
+    "omidiora samuel <samparsky@gmail.com>"
   ]
 }

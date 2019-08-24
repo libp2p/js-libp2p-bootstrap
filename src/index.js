@@ -1,3 +1,6 @@
+/**
+ * @module js-libp2p-bootstrap
+ */
 'use strict'
 
 const PeerId = require('peer-id')
@@ -12,6 +15,8 @@ log.error = debug('libp2p:bootstrap:error')
 
 /**
  * Emits 'peer' events on a regular interval for each peer in the provided list.
+ * @class
+ * @memberof module:js-libp2p-bootstrap
  */
 class Bootstrap extends EventEmitter {
   /**
@@ -19,7 +24,7 @@ class Bootstrap extends EventEmitter {
    *
    * @param {Object} options
    * @param {Array<string>} options.list - the list of peer addresses in multi-address format
-   * @param {number} options.interval - the interval between emitting addresses (in milli-seconds)
+   * @param {number} [options.interval] - the interval between emitting addresses (in milli-seconds)
    *
    */
   constructor (options) {
@@ -75,6 +80,6 @@ class Bootstrap extends EventEmitter {
     }
   }
 }
-
-exports = module.exports = Bootstrap
+/** Export tags */
 exports.tag = 'bootstrap'
+module.exports = Bootstrap
