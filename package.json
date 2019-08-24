@@ -16,7 +16,7 @@
     "release-major": "aegir release --type major -t node",
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage publish",
-    "gen:typings": "./node_modules/.bin/jsdoc -c ./.jsdoc.json"
+    "generate-typings": "./node_modules/.bin/jsdoc -c ./.jsdoc.json"
   },
   "keywords": [
     "IPFS"
