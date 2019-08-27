@@ -33,6 +33,7 @@
     "aegir": "^20.0.0",
     "chai": "^4.2.0",
     "jsdoc": "^3.6.3",
+    "jsdoc-export-default-interop": "^0.3.1",
     "tsd-jsdoc": "^2.3.1",
     "typescript-definition-tester": "0.0.6"
   },

@@ -23,7 +23,6 @@ jobs:
       script:
         - npx aegir dep-check
         - npm run lint
-        - npm run generate-typings
 
     - stage: test
       name: chrome
