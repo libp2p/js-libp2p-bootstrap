@@ -6,8 +6,7 @@ const mafmt = require('mafmt')
 const { EventEmitter } = require('events')
 const debug = require('debug')
 
-const log = debug('libp2p:bootstrap')
-log.error = debug('libp2p:bootstrap:error')
+const error = debug('libp2p:bootstrap:error')
 
 /**
  * Emits 'peer' events on a regular interval for each peer in the provided list.
@@ -21,7 +20,7 @@ class Bootstrap extends EventEmitter {
    * @param {number} [options.interval] - the interval between emitting addresses in milliseconds (default: 10000)
    *
    */
-  constructor (options = {}) {
+  constructor (options = { list: [] }) {
     if (!options.list || !options.list.length) {
       throw new Error('Bootstrap requires a list of peer addresses')
     }
@@ -55,7 +54,7 @@ class Bootstrap extends EventEmitter {
 
     this._list.forEach((candidate) => {
       if (!mafmt.P2P.matches(candidate)) {
-        return log.error('Invalid multiaddr')
+        return error('Invalid multiaddr')
       }
 
       const ma = multiaddr(candidate)
@@ -68,7 +67,7 @@ class Bootstrap extends EventEmitter {
           multiaddrs: [ma]
         })
       } catch (err) {
-        log.error('Invalid bootstrap peer id', err)
+        error('Invalid bootstrap peer id', err)
       }
     })
   }
@@ -77,7 +76,7 @@ class Bootstrap extends EventEmitter {
    * Stop emitting events.
    */
   stop () {
-    clearInterval(this._timer)
+    if (this._timer) clearInterval(this._timer)
     this._timer = null
   }
 }
