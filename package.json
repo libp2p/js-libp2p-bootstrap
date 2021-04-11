@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "debug": "^4.3.1",
-    "mafmt": "^8.0.0",
+    "mafmt": "^9.0.0",
     "multiaddr": "^9.0.1",
     "peer-id": "^0.14.0"
   },
