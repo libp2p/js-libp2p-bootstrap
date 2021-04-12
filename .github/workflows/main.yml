@@ -15,6 +15,7 @@ jobs:
     - run: npm install
     - run: npx aegir lint
     - run: npx aegir dep-check
+    - run: npx aegir build
   test-node:
     needs: check
     runs-on: ${{ matrix.os }}
