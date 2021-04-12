@@ -45,4 +45,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
-      - run: npx aegir test -t browser -t webworker --bail -- --browsers FirefoxHeadless
+      - run: npx aegir test -t browser -t webworker --bail -- --browser firefox
