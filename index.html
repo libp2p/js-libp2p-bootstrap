@@ -3,120 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>libp2p-bootstrap - v0.12.2</title>
-	<meta name="description" content="Documentation for libp2p-bootstrap - v0.12.2">
+	<title>libp2p-bootstrap - v0.12.3</title>
+	<meta name="description" content="Documentation for libp2p-bootstrap - v0.12.3">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" />
-	<style>
-        .toolbar-icon {
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-        .toolbar-icon-search {
-            box-sizing: border-box;
-            position: absolute;
-            overflow: hidden;
-            right: -40px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            @media (min-width: 901px){
-                display: none
-            }
-        }
-            @media (min-width: 901px){
-                .toolbar-icon-menu {
-                    display: none
-                }
-                .toolbar-icon-options {
-                    display: none
-                }
-            }
-
-        .gg-menu {
-            transform: scale(var(--ggs,1))
-        }
-        .gg-menu,
-        .gg-menu::after,
-        .gg-menu::before {
-            box-sizing: border-box;
-            position: relative;
-            display: block;
-            width: 20px;
-            height: 2px;
-            border-radius: 3px;
-            background: currentColor
-        }
-        .gg-menu::after,
-        .gg-menu::before {
-            content: "";
-            position: absolute;
-            top: -6px
-        }
-        .gg-menu::after {
-            top: 6px
-        }
-        .gg-options {
-            box-sizing: border-box;
-            position: relative;
-            display: block;
-            transform: scale(var(--ggs,1));
-            width: 10px;
-            height: 2px;
-            box-shadow:
-                -3px 4px 0 0,
-                3px -4px 0 0
-        }
-        .gg-options::after,
-        .gg-options::before {
-            content: "";
-            display: block;
-            box-sizing: border-box;
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border: 2px solid;
-            border-radius: 100%
-        }
-        .gg-options::before {
-            top: -7px;
-            left: -4px
-        }
-        .gg-options::after {
-            bottom: -7px;
-            right: -4px
-        }
-        .gg-search {
-            box-sizing: border-box;
-            position: relative;
-            display: block;
-            transform: scale(var(--ggs,1));
-            width: 16px;
-            height: 16px;
-            border: 2px solid;
-            border-radius: 100%;
-            margin-left: -4px;
-            margin-top: -4px
-        }
-        .gg-search::after {
-            content: "";
-            display: block;
-            box-sizing: border-box;
-            position: absolute;
-            border-radius: 3px;
-            width: 2px;
-            height: 8px;
-            background: currentColor;
-            transform: rotate(-45deg);
-            top: 10px;
-            left: 12px
-        }
-    </style>
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -125,26 +16,41 @@
 			<div class="table-wrap">
 				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
-						<label for="tsd-search-field" class="toolbar-icon toolbar-icon-search"><i class="gg-search"></i></label>
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
 					</div>
 					<ul class="results">
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">libp2p-bootstrap - v0.12.2</a>
+					<a href="index.html" class="title">libp2p-bootstrap - v0.12.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
-					<a href="#" class="toolbar-icon toolbar-icon-menu" data-toggle="menu"><i class="gg-menu"></i></a>
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-			</ul>
-			<h1>libp2p-bootstrap - v0.12.2</h1>
+			<h1>libp2p-bootstrap - v0.12.3</h1>
 		</div>
 	</div>
 </header>
@@ -162,8 +68,7 @@
 					<a href="https://codecov.io/gh/libp2p/js-libp2p-bootstrap"><img src="https://img.shields.io/codecov/c/github/libp2p/js-libp2p-bootstrap.svg?style=flat-square" alt=""></a>
 					<a href="https://travis-ci.com/libp2p/js-libp2p-bootstrap"><img src="https://img.shields.io/travis/libp2p/js-libp2p-bootstrap.svg?style=flat-square" alt=""></a>
 					<a href="https://github.com/feross/standard"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="js-standard-style"></a>
-					<img src="https://img.shields.io/badge/npm-%3E%3D6.0.0-orange.svg?style=flat-square" alt="">
-				<img src="https://img.shields.io/badge/Node.js-%3E%3D10.0.0-orange.svg?style=flat-square" alt=""></p>
+				<img src="https://img.shields.io/badge/Node.js-%3E%3D14.0.0-orange.svg?style=flat-square" alt=""></p>
 				<blockquote>
 					<p>JavaScript libp2p Implementation of the railing process of a Node through a bootstrap peer list</p>
 				</blockquote>
@@ -174,59 +79,62 @@
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
-				<pre><code class="language-JavaScript"><span class="hljs-keyword">const</span> Libp2p = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;libp2p&#x27;</span>)
-<span class="hljs-keyword">const</span> Bootstrap = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;libp2p-bootstrap&#x27;</span>)
-<span class="hljs-keyword">const</span> TCP = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;libp2p-tcp&#x27;</span>)
-<span class="hljs-keyword">const</span> { NOISE } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;libp2p-noise&#x27;</span>)
-<span class="hljs-keyword">const</span> MPLEX = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;libp2p-mplex&#x27;</span>)
+				<pre><code class="language-JavaScript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">Libp2p</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;libp2p&#039;</span><span style="color: #000000">)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">Bootstrap</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;libp2p-bootstrap&#039;</span><span style="color: #000000">)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">TCP</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;libp2p-tcp&#039;</span><span style="color: #000000">)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">NOISE</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;libp2p-noise&#039;</span><span style="color: #000000">)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">MPLEX</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;libp2p-mplex&#039;</span><span style="color: #000000">)</span>
 
-<span class="hljs-keyword">let</span> options = {
-    <span class="hljs-attr">modules</span>: {
-        <span class="hljs-attr">transport</span>: [ TCP ],
-        <span class="hljs-attr">peerDiscovery</span>: [ Bootstrap ],
-        <span class="hljs-attr">streamMuxer</span>: [ MPLEX ],
-        <span class="hljs-attr">encryption</span>: [ NOISE ]
-    },
-    <span class="hljs-attr">config</span>: {
-        <span class="hljs-attr">peerDiscovery</span>: {
-            [Bootstrap.tag]: {
-                <span class="hljs-attr">list</span>: [ <span class="hljs-comment">// a list of bootstrap peer multiaddrs to connect to on node startup</span>
-                  <span class="hljs-string">&quot;/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ&quot;</span>,
-                  <span class="hljs-string">&quot;/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN&quot;</span>,
-                  <span class="hljs-string">&quot;/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa&quot;</span> 
-                  ],
-                  <span class="hljs-attr">interval</span>: <span class="hljs-number">5000</span> <span class="hljs-comment">// default is 10 ms,</span>
-                  <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>
-            }
-        }
-    }
-}
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">options</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">    </span><span style="color: #001080">modules:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #001080">transport:</span><span style="color: #000000"> [ </span><span style="color: #0070C1">TCP</span><span style="color: #000000"> ],</span>
+<span style="color: #000000">        </span><span style="color: #001080">peerDiscovery:</span><span style="color: #000000"> [ </span><span style="color: #001080">Bootstrap</span><span style="color: #000000"> ],</span>
+<span style="color: #000000">        </span><span style="color: #001080">streamMuxer:</span><span style="color: #000000"> [ </span><span style="color: #0070C1">MPLEX</span><span style="color: #000000"> ],</span>
+<span style="color: #000000">        </span><span style="color: #001080">encryption:</span><span style="color: #000000"> [ </span><span style="color: #0070C1">NOISE</span><span style="color: #000000"> ]</span>
+<span style="color: #000000">    },</span>
+<span style="color: #000000">    </span><span style="color: #001080">config:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #001080">peerDiscovery:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">            </span><span style="color: #001080">[Bootstrap.tag]:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">                </span><span style="color: #001080">list:</span><span style="color: #000000"> [ </span><span style="color: #008000">// a list of bootstrap peer multiaddrs to connect to on node startup</span>
+<span style="color: #000000">                  </span><span style="color: #A31515">&quot;/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">                  </span><span style="color: #A31515">&quot;/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">                  </span><span style="color: #A31515">&quot;/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa&quot;</span><span style="color: #000000"> </span>
+<span style="color: #000000">                  ],</span>
+<span style="color: #000000">                  </span><span style="color: #001080">interval:</span><span style="color: #000000"> </span><span style="color: #098658">5000</span><span style="color: #000000"> </span><span style="color: #008000">// default is 10 ms,</span>
+<span style="color: #000000">                  </span><span style="color: #001080">enabled</span><span style="color: #000000">: </span><span style="color: #0000FF">true</span>
+<span style="color: #000000">            }</span>
+<span style="color: #000000">        }</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">}</span>
 
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">start</span> (<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">let</span> libp2p = <span class="hljs-keyword">await</span> Libp2p.create(options)
+<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">start</span><span style="color: #000000"> () {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">libp2p</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Libp2p</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #001080">options</span><span style="color: #000000">)</span>
 
-  libp2p.on(<span class="hljs-string">&#x27;peer:discovery&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">peerId</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;found peer: &#x27;</span>, peerId.toB58String())
-  })
+<span style="color: #000000">  </span><span style="color: #001080">libp2p</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;peer:discovery&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">function</span><span style="color: #000000"> (</span><span style="color: #001080">peerId</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;found peer: &#039;</span><span style="color: #000000">, </span><span style="color: #001080">peerId</span><span style="color: #000000">.</span><span style="color: #795E26">toB58String</span><span style="color: #000000">())</span>
+<span style="color: #000000">  })</span>
 
-  <span class="hljs-keyword">await</span> libp2p.start()
+<span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">libp2p</span><span style="color: #000000">.</span><span style="color: #795E26">start</span><span style="color: #000000">()</span>
 
-}
+<span style="color: #000000">}</span>
 
-start()
+<span style="color: #795E26">start</span><span style="color: #000000">()</span>
 </code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class=" tsd-kind-module">
-						<a href="modules/__libp2p_bootstrap_.html"> libp2p-bootstrap</a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/bootstrap.html" class="tsd-kind-icon">Bootstrap</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -237,10 +145,12 @@ start()
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>
