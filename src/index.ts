@@ -4,6 +4,7 @@ import { P2P } from '@multiformats/mafmt'
 import { EventEmitter } from 'events'
 import debug from 'debug'
 import type PeerDiscovery from '@libp2p/interfaces/peer-discovery'
+import type { PeerData } from '@libp2p/interfaces/peer-data'
 
 const log = Object.assign(debug('libp2p:bootstrap'), {
   error: debug('libp2p:bootstrap:error')
@@ -27,8 +28,8 @@ export interface BootstrapOptions {
 export class Bootstrap extends EventEmitter implements PeerDiscovery {
   static tag = 'bootstrap'
 
-  private timer: NodeJS.Timer | null
-  private readonly list: string[]
+  private timer?: NodeJS.Timer
+  private readonly list: PeerData[]
   private readonly interval: number
 
   constructor (options: BootstrapOptions = { list: [] }) {
@@ -37,9 +38,31 @@ export class Bootstrap extends EventEmitter implements PeerDiscovery {
     }
     super()
 
-    this.list = options.list
     this.interval = options.interval ?? 10000
-    this.timer = null
+    this.list = []
+
+    for (const candidate of options.list) {
+      if (!P2P.matches(candidate)) {
+        log.error('Invalid multiaddr')
+        continue
+      }
+
+      const ma = new Multiaddr(candidate)
+      const peerIdStr = ma.getPeerId()
+
+      if (peerIdStr == null) {
+        log.error('Invalid bootstrap multiaddr without peer id')
+        continue
+      }
+
+      const peerData: PeerData = {
+        id: PeerId.fromString(peerIdStr),
+        multiaddrs: [ma],
+        protocols: []
+      }
+
+      this.list.push(peerData)
+    }
   }
 
   isStarted () {
@@ -67,29 +90,8 @@ export class Bootstrap extends EventEmitter implements PeerDiscovery {
       return
     }
 
-    this.list.forEach((candidate) => {
-      if (!P2P.matches(candidate)) {
-        return log.error('Invalid multiaddr')
-      }
-
-      const ma = new Multiaddr(candidate)
-      const peerIdStr = ma.getPeerId()
-
-      if (peerIdStr == null) {
-        log.error('Invalid bootstrap multiaddr without peer id')
-        return
-      }
-
-      const peerId = PeerId.fromString(peerIdStr)
-
-      try {
-        this.emit('peer', {
-          id: peerId,
-          multiaddrs: [ma]
-        })
-      } catch (err) {
-        log.error('Invalid bootstrap peer id', err)
-      }
+    this.list.forEach((peerData) => {
+      this.emit('peer', peerData)
     })
   }
 
@@ -97,7 +99,10 @@ export class Bootstrap extends EventEmitter implements PeerDiscovery {
    * Stop emitting events
    */
   stop () {
-    if (this.timer != null) clearInterval(this.timer)
-    this.timer = null
+    if (this.timer != null) {
+      clearInterval(this.timer)
+    }
+
+    this.timer = undefined
   }
 }
