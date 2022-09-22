@@ -24,6 +24,15 @@ $ npm i @libp2p/bootstrap
 
 ## Usage
 
+The configured bootstrap peers will be discovered after the configured timeout. This will ensure
+there are some peers in the peer store for the node to use to discover other peers.
+
+They will be tagged with a tag with the name `'bootstrap'` tag, the value `50` and it will expire
+after two minutes which means the nodes connections may be closed if the maximum number of
+connections is reached.
+
+Clients that need constant connections to bootstrap nodes (e.g. browsers) can set the TTL to `Infinity`.
+
 ```JavaScript
 const Libp2p = require('libp2p')
 const Bootstrap = require('libp2p-bootstrap')
@@ -45,9 +54,11 @@ let options = {
                   "/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
                   "/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
                   "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"
-                  ],
-                  interval: 5000 // default is 10 ms,
-                  enabled: true
+                ],
+                timeout: 1000, // in ms,
+                tagName: 'bootstrap',
+                tagValue: 50,
+                tagTTL: 120000 // in ms
             }
         }
     }
