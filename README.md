@@ -34,38 +34,39 @@ connections is reached.
 Clients that need constant connections to bootstrap nodes (e.g. browsers) can set the TTL to `Infinity`.
 
 ```JavaScript
-const Libp2p = require('libp2p')
-const Bootstrap = require('libp2p-bootstrap')
-const TCP = require('libp2p-tcp')
-const { NOISE } = require('libp2p-noise')
-const MPLEX = require('libp2p-mplex')
+import { createLibp2p } from 'libp2p'
+import { Bootstrap } from '@libp2p/bootstrap'
+import { TCP } from 'libp2p/tcp'
+import { Noise } from '@libp2p/noise'
+import { Mplex } from '@libp2p/mplex'
 
 let options = {
-    modules: {
-        transport: [ TCP ],
-        peerDiscovery: [ Bootstrap ],
-        streamMuxer: [ MPLEX ],
-        encryption: [ NOISE ]
-    },
-    config: {
-        peerDiscovery: {
-            [Bootstrap.tag]: {
-                list: [ // a list of bootstrap peer multiaddrs to connect to on node startup
-                  "/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
-                  "/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
-                  "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"
-                ],
-                timeout: 1000, // in ms,
-                tagName: 'bootstrap',
-                tagValue: 50,
-                tagTTL: 120000 // in ms
-            }
-        }
-    }
+  transports: [
+    new TCP()
+  ],
+  streamMuxers: [
+    new Mplex()
+  ],
+  connectionEncryption: [
+    new Noise()
+  ],
+  peerDiscovery: [
+    new Bootstrap({
+      list: [ // a list of bootstrap peer multiaddrs to connect to on node startup
+        "/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
+        "/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
+        "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"
+      ],
+      timeout: 1000, // in ms,
+      tagName: 'bootstrap',
+      tagValue: 50,
+      tagTTL: 120000 // in ms
+    })
+  ]
 }
 
 async function start () {
-  let libp2p = await Libp2p.create(options)
+  let libp2p = await createLibp2p(options)
 
   libp2p.on('peer:discovery', function (peerId) {
     console.log('found peer: ', peerId.toB58String())
