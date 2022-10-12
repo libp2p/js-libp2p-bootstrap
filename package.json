@@ -150,6 +150,7 @@
   "devDependencies": {
     "@libp2p/interface-peer-discovery-compliance-tests": "^2.0.0",
     "@libp2p/interface-peer-id": "^1.0.4",
+    "@libp2p/peer-id-factory": "^1.0.18",
     "@libp2p/peer-store": "^5.0.0",
     "aegir": "^37.5.3",
     "datastore-core": "^8.0.1",

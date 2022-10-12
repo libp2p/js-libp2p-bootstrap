@@ -2,31 +2,28 @@
 
 import { expect } from 'aegir/chai'
 import { IPFS } from '@multiformats/mafmt'
-import { bootstrap } from '../src/index.js'
+import { bootstrap, BootstrapComponents } from '../src/index.js'
 import peerList from './fixtures/default-peers.js'
 import partialValidPeerList from './fixtures/some-invalid-peers.js'
 import { isPeerId } from '@libp2p/interface-peer-id'
-import { Components } from '@libp2p/components'
 import { PersistentPeerStore } from '@libp2p/peer-store'
 import { MemoryDatastore } from 'datastore-core'
 import { multiaddr } from '@multiformats/multiaddr'
 import { peerIdFromString } from '@libp2p/peer-id'
 import delay from 'delay'
 import { start, stop } from '@libp2p/interfaces/startable'
+import { createEd25519PeerId } from '@libp2p/peer-id-factory'
 
 describe('bootstrap', () => {
-  let components: Components
+  let components: BootstrapComponents
 
-  beforeEach(() => {
-    const datastore = new MemoryDatastore()
-    const peerStore = new PersistentPeerStore()
-
-    components = new Components({
-      peerStore,
-      datastore
-    })
-
-    peerStore.init(components)
+  beforeEach(async () => {
+    components = {
+      peerStore: new PersistentPeerStore({
+        peerId: await createEd25519PeerId(),
+        datastore: new MemoryDatastore()
+      })
+    }
   })
 
   it('should throw if no peer list is provided', () => {
@@ -82,7 +79,7 @@ describe('bootstrap', () => {
 
     const bootstrapper0PeerId = peerIdFromString(bootstrapper0PeerIdStr)
 
-    const tags = await components.getPeerStore().getTags(bootstrapper0PeerId)
+    const tags = await components.peerStore.getTags(bootstrapper0PeerId)
 
     expect(tags).to.have.lengthOf(1, 'bootstrap tag was not set')
     expect(tags).to.have.nested.property('[0].name', tagName, 'bootstrap tag had incorrect name')
@@ -90,7 +87,7 @@ describe('bootstrap', () => {
 
     await delay(tagTTL * 2)
 
-    const tags2 = await components.getPeerStore().getTags(bootstrapper0PeerId)
+    const tags2 = await components.peerStore.getTags(bootstrapper0PeerId)
 
     expect(tags2).to.have.lengthOf(0, 'bootstrap tag did not expire')
 
