@@ -154,7 +154,7 @@
     "@libp2p/peer-id-factory": "^2.0.0",
     "@libp2p/peer-store": "^6.0.0",
     "aegir": "^37.9.1",
-    "datastore-core": "^8.0.1",
+    "datastore-core": "^9.0.2",
     "delay": "^5.0.0"
   }
 }
