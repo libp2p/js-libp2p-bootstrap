@@ -33,10 +33,9 @@
 </ul>
 </li>
 <li><a href="#usage">Usage</a></li>
-<li><a href="#contribute">Contribute</a></li>
 <li><a href="#api-docs">API Docs</a></li>
 <li><a href="#license">License</a></li>
-<li><a href="#contribute-1">Contribute</a></li>
+<li><a href="#contribution">Contribution</a></li>
 </ul>
 
 <a href="#install" id="install" style="color: inherit; text-decoration: none;">
@@ -64,15 +63,6 @@ connections is reached.</p>
 <pre><code class="language-JavaScript"><span class="hl-7">import</span><span class="hl-0"> { </span><span class="hl-8">createLibp2p</span><span class="hl-0"> } </span><span class="hl-7">from</span><span class="hl-0"> </span><span class="hl-1">&#39;libp2p&#39;</span><br/><span class="hl-7">import</span><span class="hl-0"> { </span><span class="hl-8">bootstrap</span><span class="hl-0"> } </span><span class="hl-7">from</span><span class="hl-0"> </span><span class="hl-1">&#39;@libp2p/bootstrap&#39;</span><br/><span class="hl-7">import</span><span class="hl-0"> { </span><span class="hl-8">tcp</span><span class="hl-0"> } </span><span class="hl-7">from</span><span class="hl-0"> </span><span class="hl-1">&#39;libp2p/tcp&#39;</span><br/><span class="hl-7">import</span><span class="hl-0"> { </span><span class="hl-8">noise</span><span class="hl-0"> } </span><span class="hl-7">from</span><span class="hl-0"> </span><span class="hl-1">&#39;@libp2p/noise&#39;</span><br/><span class="hl-7">import</span><span class="hl-0"> { </span><span class="hl-8">mplex</span><span class="hl-0"> } </span><span class="hl-7">from</span><span class="hl-0"> </span><span class="hl-1">&#39;@libp2p/mplex&#39;</span><br/><br/><span class="hl-9">let</span><span class="hl-0"> </span><span class="hl-8">options</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-8">transports:</span><span class="hl-0"> [</span><br/><span class="hl-0">    </span><span class="hl-10">tcp</span><span class="hl-0">()</span><br/><span class="hl-0">  ],</span><br/><span class="hl-0">  </span><span class="hl-8">streamMuxers:</span><span class="hl-0"> [</span><br/><span class="hl-0">    </span><span class="hl-10">mplex</span><span class="hl-0">()</span><br/><span class="hl-0">  ],</span><br/><span class="hl-0">  </span><span class="hl-8">connectionEncryption:</span><span class="hl-0"> [</span><br/><span class="hl-0">    </span><span class="hl-10">noise</span><span class="hl-0">()</span><br/><span class="hl-0">  ],</span><br/><span class="hl-0">  </span><span class="hl-8">peerDiscovery:</span><span class="hl-0"> [</span><br/><span class="hl-0">    </span><span class="hl-10">bootstrap</span><span class="hl-0">({</span><br/><span class="hl-0">      </span><span class="hl-8">list:</span><span class="hl-0"> [ </span><span class="hl-11">// a list of bootstrap peer multiaddrs to connect to on node startup</span><br/><span class="hl-0">        </span><span class="hl-1">&quot;/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">        </span><span class="hl-1">&quot;/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">        </span><span class="hl-1">&quot;/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa&quot;</span><br/><span class="hl-0">      ],</span><br/><span class="hl-0">      </span><span class="hl-8">timeout:</span><span class="hl-0"> </span><span class="hl-12">1000</span><span class="hl-0">, </span><span class="hl-11">// in ms,</span><br/><span class="hl-0">      </span><span class="hl-8">tagName:</span><span class="hl-0"> </span><span class="hl-1">&#39;bootstrap&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-8">tagValue:</span><span class="hl-0"> </span><span class="hl-12">50</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-8">tagTTL:</span><span class="hl-0"> </span><span class="hl-12">120000</span><span class="hl-0"> </span><span class="hl-11">// in ms</span><br/><span class="hl-0">    })</span><br/><span class="hl-0">  ]</span><br/><span class="hl-0">}</span><br/><br/><span class="hl-9">async</span><span class="hl-0"> </span><span class="hl-9">function</span><span class="hl-0"> </span><span class="hl-10">start</span><span class="hl-0"> () {</span><br/><span class="hl-0">  </span><span class="hl-9">let</span><span class="hl-0"> </span><span class="hl-8">libp2p</span><span class="hl-0"> = </span><span class="hl-7">await</span><span class="hl-0"> </span><span class="hl-10">createLibp2p</span><span class="hl-0">(</span><span class="hl-8">options</span><span class="hl-0">)</span><br/><br/><span class="hl-0">  </span><span class="hl-8">libp2p</span><span class="hl-0">.</span><span class="hl-10">on</span><span class="hl-0">(</span><span class="hl-1">&#39;peer:discovery&#39;</span><span class="hl-0">, </span><span class="hl-9">function</span><span class="hl-0"> (</span><span class="hl-8">peerId</span><span class="hl-0">) {</span><br/><span class="hl-0">    </span><span class="hl-8">console</span><span class="hl-0">.</span><span class="hl-10">log</span><span class="hl-0">(</span><span class="hl-1">&#39;found peer: &#39;</span><span class="hl-0">, </span><span class="hl-8">peerId</span><span class="hl-0">.</span><span class="hl-10">toB58String</span><span class="hl-0">())</span><br/><span class="hl-0">  })</span><br/><br/><span class="hl-0">  </span><span class="hl-7">await</span><span class="hl-0"> </span><span class="hl-8">libp2p</span><span class="hl-0">.</span><span class="hl-10">start</span><span class="hl-0">()</span><br/><br/><span class="hl-0">}</span><br/><br/><span class="hl-10">start</span><span class="hl-0">()</span>
 </code></pre>
 
-<a href="#contribute" id="contribute" style="color: inherit; text-decoration: none;">
-  <h2>Contribute</h2>
-</a>
-<p>The libp2p implementation in JavaScript is a work in progress. As such, there are a few things you can do right now to help out:</p>
-<ul>
-<li>Go through the modules and <strong>check out existing issues</strong>. This is especially useful for modules in active development. Some knowledge of IPFS/libp2p may be required, as well as the infrastructure behind it - for instance, you may need to read up on p2p and more complex operations like muxing to be able to help technically.</li>
-<li><strong>Perform code reviews</strong>. More eyes will help a) speed the project along b) ensure quality and c) reduce possible future bugs.</li>
-</ul>
-
 <a href="#api-docs" id="api-docs" style="color: inherit; text-decoration: none;">
   <h2>API Docs</h2>
 </a>
@@ -89,8 +79,8 @@ connections is reached.</p>
 <li>MIT (<a href="LICENSE-MIT">LICENSE-MIT</a> / <a href="http://opensource.org/licenses/MIT">http://opensource.org/licenses/MIT</a>)</li>
 </ul>
 
-<a href="#contribute-1" id="contribute-1" style="color: inherit; text-decoration: none;">
-  <h2>Contribute</h2>
+<a href="#contribution" id="contribution" style="color: inherit; text-decoration: none;">
+  <h2>Contribution</h2>
 </a>
 <p>Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.</p>
 </div></div>
