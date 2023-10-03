@@ -1,4 +1,4 @@
-# 📁 Archived - this module has been merged into [js-libp2p](https://github.com/libp2p/js-libp2p/tree/master/packages/bootstrap)
+# 📁 Archived - this module has been merged into [js-libp2p](https://github.com/libp2p/js-libp2p/tree/master/packages/peer-discovery-bootstrap)
 
 # @libp2p/bootstrap <!-- omit in toc -->
 
